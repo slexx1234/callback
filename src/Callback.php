@@ -89,7 +89,7 @@ class Callback
     }
 
     /**
-     * @return mixed|null|object|string
+     * @return object|string
      */
     public function getMethod()
     {
