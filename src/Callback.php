@@ -64,9 +64,13 @@ class Callback
                 $this->method = $callback;
             }
         } else if (is_callable($callback)) {
-            $this->class = $callback[0];
-            $this->type = is_object($callback[0]) ? '->' : '::';
-            $this->method = $callback[1];
+            if (is_array($callback)) {
+                $this->class = $callback[0];
+                $this->type = is_object($callback[0]) ? '->' : '::';
+                $this->method = $callback[1];
+            } else {
+                $this->method = $callback;
+            }
         } else {
             throw CallbackException::notCallable();
         }

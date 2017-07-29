@@ -32,4 +32,16 @@ class CallbackTest extends TestCase
     {
         $this->assertFalse((new Callback('TestClass->method'))(false));
     }
+
+    public function testCallable()
+    {
+        $this->assertTrue((new Callback(['TestClass', 'staticMethod']))());
+    }
+
+    public function testClosure()
+    {
+        $this->assertTrue((new Callback(function() {
+            return true;
+        }))());
+    }
 }
